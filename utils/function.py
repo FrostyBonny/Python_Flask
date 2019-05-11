@@ -92,7 +92,6 @@ def verify_token(token):
         current_time = int(time.time())
         token_end_time = int(time.mktime(time.strptime(str(m_result['endtime']), "%Y-%m-%d %H:%M:%S")))
         # print(current_time,token_end_time)
-        # 此处报错
         differ = current_time - token_end_time
         if 0 < differ and differ < 7200:
             return True 

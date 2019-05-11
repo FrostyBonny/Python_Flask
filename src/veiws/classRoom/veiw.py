@@ -18,6 +18,7 @@ class ClassRoom(Resource):
         if not verify_result:
             return make_result(code=Code.ERROR,msg="token失效")
         args.pop('token')
+        print(args)
         if args["type"] == "all":
             data = dbclient.list_all(table)
         else:

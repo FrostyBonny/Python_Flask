@@ -20,7 +20,7 @@ POST：
 GET：无效接口
 
 
-接口：/classRoom
+接口：/classRoom/
 GET：获取数据
 数据格式：
 说明：
