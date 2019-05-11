@@ -23,7 +23,7 @@ class ClassRoom(Resource):
         else:
             data = dbclient.list_one(table,{"name":args['name']})
             if len(data) == 0:
-                return make_result(data,Code.SUCCESS,count=0)
+                return make_result(code=Code.ERROR,msg='该教室不存在')
         # print(len(data))
         length = len(data)
         data = pagenation(data,args["page"] - 1,args["limit"])

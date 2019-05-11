@@ -55,7 +55,7 @@ class Login_Out(Resource):
             new_token = make_token()
             result = dbclient.update(table,new_token,{"token":args["token"]})
             if result:
-                return make_result(code=Code.SUCCESS)
+                return make_result(code=Code.SUCCESS,msg="登出失败")
             else:
                 return make_result(code=Code.ERROR,msg="登出失败")
 

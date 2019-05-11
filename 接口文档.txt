@@ -1,0 +1,96 @@
+用户：
+
+接口：/user/login 
+POST：
+数据格式：
+{
+	"username":"123",
+	"password":"123"
+}
+接收数据：
+{
+    "code": 0,
+    "data": {
+        "name": "管理员",
+        "role": "admin",
+        "token": "WR6ZIT4HMJ"
+    },
+    "msg": "成功"
+}
+GET：无效接口
+
+
+接口：/classRoom
+GET：获取数据
+数据格式：
+说明：
+{
+	"type":"all", 表明数据查询的方式，all代表所有，否则为根据名字查询，根据名字查询需要添加name字段
+	"limit":10,  表明分页大小
+	"page":1  表明分页第几页
+}
+eg：
+查询all：
+{
+	"type":"all",
+	"limit":10,
+	"page":1
+}
+查询name：
+{
+	"type":"one",
+	"limit":10,
+	"page":1,
+	"name":"教室1"
+}
+
+预期返回：
+查询到的数据
+
+PUT：新增数据
+数据格式：
+{
+    "arriveNum": 1,
+    "name": "教室1",
+    "total": 1
+}
+数据说明：
+{
+    "arriveNum": 1, #到达的人数，number
+    "name": "教室1",# 教室的名字
+    "total": 1 # 教室的总共人数：number
+}
+预期返回：
+{
+    "code": 0,
+    "data": null,
+    "msg": "成功"
+}
+
+POST：更新数据
+数据格式：
+{
+	"id":4, #需要修改的行的id
+    # 以下为需要修改的字段，一一对应
+    "arriveNum": 1,
+    "name": "教室1",
+    "total": 1
+}
+预期返回：
+{
+    "code": 0,
+    "data": null,
+    "msg": "成功"
+}
+
+DELETE：删除数据
+数据格式：
+{
+	"id":4 #需要删除的行的id
+}
+预期返回：
+{
+    "code": 0,
+    "data": null,
+    "msg": "成功"
+}
