@@ -52,6 +52,7 @@ class ClassRoom(Resource):
     @dbclient_decorate
     def post(self):
         args = allParser.putParser.parse_args()
+        # 此处为c++访问处理
         if args.id == None:
             _t = str(request.get_data(), encoding = "utf-8")
             _t = _t.split("&")
@@ -84,9 +85,9 @@ class ClassRoom(Resource):
         args.pop('token')
         result = dbclient.delete(table,{"id":args['id']})
         if result:
-            response = make_result(code=Code.SUCCESS)
+            response = make_result(code=Code.SUCCESS,msg="删除成功")
         else:
-            response = make_result(code=Code.ERROR)
+            response = make_result(code=Code.ERROR,msg="删除失败")
         return response
 
 api.add_resource(ClassRoom, '/',endpoint='classRoom')

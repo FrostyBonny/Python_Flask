@@ -14,10 +14,35 @@ deleteUserParser.add_argument('token', type=str, location='headers')
 
 
 putUserParser = reqparse.RequestParser()
-putUserParser.add_argument('username', type=str, help='please enter username', required=True)
-putUserParser.add_argument('password', type=str, help='please enter password', required=True)
-putUserParser.add_argument('role', type=str, help='please enter role', required=True)
-putUserParser.add_argument('name', type=str, help='please enter name', required=True)
+
+putUserParserRules = [{
+        "name":"username",
+        "type":str,
+        "help":"please enter username",
+        "required":True,
+    },{
+        "name":"password",
+        "type":str,
+        "help":"please enter password",
+        "required":True,
+    },{
+        "name":"role",
+        "type":str,
+        "help":"please enter role",
+        "required":True,
+    },{
+        "name":"name",
+        "type":str,
+        "help":"please enter name",
+        "required":True,
+    }]
+for i in putUserParserRules:
+    putUserParser.add_argument(i['name'], type=i['type'], help=i['help'], required=i['required'])
+
+# putUserParser.add_argument('username', type=str, help='please enter username', required=True)
+# putUserParser.add_argument('password', type=str, help='please enter password', required=True)
+# putUserParser.add_argument('role', type=str, help='please enter role', required=True)
+# putUserParser.add_argument('name', type=str, help='please enter name', required=True)
 
 
 postUserParser = reqparse.RequestParser()
