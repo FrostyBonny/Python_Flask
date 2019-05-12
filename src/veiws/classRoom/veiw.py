@@ -36,7 +36,7 @@ class ClassRoom(Resource):
     #  新增数据
     @dbclient_decorate
     def put(self):
-        args = allParser.postParser.parse_args()
+        args = allParser.putParser.parse_args()
         verify_result = verify_token(args["token"])
         if not verify_result:
             return make_result(code=Code.ERROR)
@@ -51,7 +51,7 @@ class ClassRoom(Resource):
     #  更新数据
     @dbclient_decorate
     def post(self):
-        args = allParser.putParser.parse_args()
+        args = allParser.postParser.parse_args()
         # 此处为c++访问处理
         if args.id == None:
             _t = str(request.get_data(), encoding = "utf-8")
